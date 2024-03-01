@@ -25,9 +25,9 @@ const mono = Inconsolata({
 });
 
 export const metadata: Metadata = {
-  title: "Gyvenimas per brangus",
+  title: "Ugnė Makselytė",
   description: "Gyvenimas per brangus svetainė",
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://ugnemakselyte.com"),
 };
 
 export default function RootLayout({
