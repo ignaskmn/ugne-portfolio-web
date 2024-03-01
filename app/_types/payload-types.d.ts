@@ -15,8 +15,9 @@ export interface Config {
     categories: Category;
     images: Image;
     recordings: Recording;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    documents: Document;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {
     footer: Footer;
@@ -31,7 +32,7 @@ export interface Config {
 export interface User {
   id: string;
   name?: string | null;
-  roles?: ("admin" | "user")[] | null;
+  roles?: ('admin' | 'user')[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -52,7 +53,7 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   hero: {
-    type: "none" | "home" | "default";
+    type: 'none' | 'home' | 'default';
     text?: string | null;
     subtext?:
       | {
@@ -75,13 +76,13 @@ export interface Page {
               | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: "textBlock";
+            blockType: 'textBlock';
           }
         | {
             image: string | Image;
             id?: string | null;
             blockName?: string | null;
-            blockType: "imageBlock";
+            blockType: 'imageBlock';
           }
       )[]
     | null;
@@ -93,7 +94,7 @@ export interface Page {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -140,25 +141,25 @@ export interface Work {
           | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "textBlock";
+        blockType: 'textBlock';
       }
     | {
         image: string | Image;
         id?: string | null;
         blockName?: string | null;
-        blockType: "imageBlock";
+        blockType: 'imageBlock';
       }
     | {
         video?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "videoBlock";
+        blockType: 'videoBlock';
       }
     | {
         recording?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "recordingBlock";
+        blockType: 'recordingBlock';
       }
   )[];
   slug?: string | null;
@@ -169,7 +170,7 @@ export interface Work {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -204,7 +205,7 @@ export interface Show {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -223,12 +224,27 @@ export interface Recording {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "documents".
+ */
+export interface Document {
+  id: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -266,16 +282,7 @@ export interface Footer {
   address?: string | null;
   socials?:
     | {
-        type?:
-          | (
-              | "bandcamp"
-              | "soundcloud"
-              | "spotify"
-              | "youtube"
-              | "linkedin"
-              | "instagram"
-            )
-          | null;
+        type?: ('bandcamp' | 'soundcloud' | 'spotify' | 'youtube' | 'linkedin' | 'instagram') | null;
         link: string;
         id?: string | null;
       }[]
@@ -292,10 +299,10 @@ export interface Header {
   navItems?:
     | {
         link: {
-          type?: ("reference" | "custom") | null;
+          type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
-            relationTo: "pages";
+            relationTo: 'pages';
             value: string | Page;
           } | null;
           url?: string | null;
@@ -314,12 +321,13 @@ export interface Header {
 export interface Cv {
   id: string;
   name?: string | null;
-  image: string | Image;
+  image?: string | Image | null;
   richText?:
     | {
         [k: string]: unknown;
       }[]
     | null;
+  download?: string | Document | null;
   education?:
     | {
         institution: string;
@@ -342,6 +350,7 @@ export interface Cv {
   createdAt?: string | null;
 }
 
-// declare module 'payload' {
-//   export interface GeneratedTypes extends Config {}
-// }
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
+}

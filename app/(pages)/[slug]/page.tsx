@@ -11,63 +11,27 @@ import { generateMeta } from "@/app/_utilities/generateMeta";
 import { Hero } from "@/app/_components/Hero";
 
 export default async function Page({ params: { slug = "home" } }) {
-  // const { isEnabled: isDraftMode } = draftMode();
+  const { isEnabled: isDraftMode } = draftMode();
 
-  // let page: Page | null = null;
+  let page: Page | null = null;
 
-  // try {
-  //   page = await fetchDoc<Page>({
-  //     collection: "pages",
-  //     slug,
-  //     draft: isDraftMode,
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    page = await fetchDoc<Page>({
+      collection: "pages",
+      slug,
+      draft: isDraftMode,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
-  // if (!page) {
-  //   return notFound();
-  // }
+  if (!page) {
+    return notFound();
+  }
 
   // const { hero, layout } = page;
-  // const { hero } = page;
+  const { hero } = page;
 
-  const hero: {
-    type: "none" | "home" | "default";
-    text?: string | null;
-    subtext?:
-      | {
-          [k: string]: unknown;
-        }[]
-      | null;
-    description?:
-      | {
-          [k: string]: unknown;
-        }[]
-      | null;
-  } = {
-    type: "home",
-    text: "ugnė makselytė",
-    subtext: [
-      {
-        children: [
-          {
-            text: "portfolio",
-          },
-        ],
-        type: "h2",
-      },
-    ],
-    description: [
-      {
-        children: [
-          {
-            text: "This page is intended to reflect my creative work in the areas of experimental music composition, sound art & design and field recordings: – Ugnė (Davai Bėgam)",
-          },
-        ],
-      },
-    ],
-  };
   return (
     <React.Fragment>
       {/* <Hero {...hero} />
@@ -75,11 +39,7 @@ export default async function Page({ params: { slug = "home" } }) {
       blocks={layout}
       disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
     /> */}
-      <div className="flex justify-center w-full px-4 my-4">
-        <h2 className="text-white text-2xl underline underline-offset-8 decoration-yellow-400">
-          Website is being updated, check back soon
-        </h2>
-      </div>
+
       <div className="mx-4 md:mx-24">
         <div className="mb-16 md:my-24">
           <Hero {...hero} />
