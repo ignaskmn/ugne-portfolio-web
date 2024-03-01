@@ -75,7 +75,7 @@ export default async function Page({ params: { slug = "home" } }) {
       blocks={layout}
       disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
     /> */}
-      <div className="flex justify-center w-full my-4">
+      <div className="flex justify-center w-full px-4 my-4">
         <h2 className="text-white text-2xl underline underline-offset-8 decoration-yellow-400">
           Website is being updated, check back soon
         </h2>
