@@ -19,7 +19,7 @@ export const fetchDoc = async <T>(args: {
 
   const doc: T = await fetch(
     `${
-      process.env.PAYLOAD_URL
+      process.env.NEXT_PRIVATE_PAYLOAD_URL
     }/api/${collection}?where[slug][equals]=${slug}${
       draft && payloadToken ? "&draft=true" : ""
     }`,
