@@ -26,7 +26,7 @@ const mono = Inconsolata({
 
 export const metadata: Metadata = {
   title: "Ugnė Makselytė",
-  description: "Gyvenimas per brangus svetainė",
+  description: "Ugnė Makselytė portfolio",
   metadataBase: new URL("https://ugnemakselyte.com"),
 };
 

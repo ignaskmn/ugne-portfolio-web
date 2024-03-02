@@ -13,7 +13,7 @@ import Image from "next/image";
 //add mobile menu that opens when burger is pressed
 
 export default async function Footer() {
-  // let footer: Footer | null = null;
+  let footer: Footer | null = null;
 
   const socialIcons = {
     bandcamp,
@@ -24,52 +24,11 @@ export default async function Footer() {
     youtube,
   };
 
-  const footer: Footer = {
-    email: "ugne@ugnemakselyte.com",
-    phone: "+370 123 456789",
-    address: "Berlin, Germany",
-    socials: [
-      {
-        type: "bandcamp",
-        link: "https://bandcamp.com",
-        id: "65e0aff895d0541e9f45ac1f",
-      },
-      {
-        type: "soundcloud",
-        link: "https://soundcloud.com",
-        id: "65e0b00595d0541e9f45ac20",
-      },
-      {
-        type: "spotify",
-        link: "https://spotify.com",
-        id: "65e0b01f95d0541e9f45ac21",
-      },
-      {
-        type: "youtube",
-        link: "https://youtube.com",
-        id: "65e0b02d95d0541e9f45ac22",
-      },
-      {
-        type: "linkedin",
-        link: "https://linkedin.com",
-        id: "65e0b03895d0541e9f45ac23",
-      },
-      {
-        type: "instagram",
-        link: "https://instagram.com",
-        id: "65e0b04495d0541e9f45ac24",
-      },
-    ],
-    createdAt: "2024-02-29T16:20:17.478Z",
-    updatedAt: "2024-02-29T16:27:01.142Z",
-    id: "65e0aec15e419c5119f090d5",
-  };
-
-  // try {
-  //   footer = await fetchFooter();
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    footer = await fetchFooter();
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <div className="bg-stone-200 text-black pt-4">
