@@ -42,11 +42,6 @@ export default function RootLayout({
       <body
         className={`${serif.variable} ${sans.variable} ${mono.variable} font-serif bg-black text-white`}
       >
-        <div className="flex justify-center w-full px-4 my-4">
-          <h2 className="text-white text-2xl underline underline-offset-8 decoration-yellow-400">
-            Website is being updated, check back soon
-          </h2>
-        </div>
         <Header />
         {isDraftMode && <AdminBar />}
         {children}
