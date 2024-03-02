@@ -2,6 +2,8 @@ import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 import type { Config } from "@/app/_types/payload-types";
 
+const url = 'https://admin.ugnemakselyte.com';
+
 export const fetchDoc = async <T>(args: {
   collection: keyof Config["collections"];
   slug?: string;
@@ -19,7 +21,7 @@ export const fetchDoc = async <T>(args: {
 
   const doc: T = await fetch(
     `${
-      process.env.NEXT_PRIVATE_PAYLOAD_URL
+      url
     }/api/${collection}?where[slug][equals]=${slug}${
       draft && payloadToken ? "&draft=true" : ""
     }`,
