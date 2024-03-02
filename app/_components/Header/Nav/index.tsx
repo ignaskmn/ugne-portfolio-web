@@ -15,7 +15,7 @@ export default function Nav({ navItems }: Header) {
   const pathname = usePathname();
 
   useEffect(() => {
-    setIsHome(pathname === "/");
+    setIsHome(pathname === "/" || pathname === "/home");
     setLoaded(true);
     setMenuOpen(false);
   }, [pathname]);

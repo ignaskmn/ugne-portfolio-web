@@ -41,7 +41,7 @@ export default async function Page({ params: { slug = "home" } }) {
     /> */}
 
       <div className="mx-4 md:mx-24">
-        <div className="mb-16 md:my-24">
+        <div className="mb-16">
           <Hero {...hero} />
         </div>
       </div>
