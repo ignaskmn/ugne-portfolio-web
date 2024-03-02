@@ -39,7 +39,7 @@ export default function Nav({ navItems }: Header) {
           {!isHome && (
             <li
               role="button"
-              className="w-full lowercase inline-block w-full border border-1 border-white py-2 px-8 text-xl bg-black text-white hover:bg-white hover:text-black "
+              className="w-full lowercase inline-block border border-1 border-white py-2 px-8 text-xl bg-black text-white hover:bg-white hover:text-black "
             >
               <Link href="/" className="w-full flex">
                 <div className="w-6 mr-4">
