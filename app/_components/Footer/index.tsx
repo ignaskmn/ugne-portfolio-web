@@ -72,7 +72,7 @@ export default async function Footer() {
                 href={social.link}
                 target="_blank"
                 rel="noreferrer"
-                className="last:ml-12"
+                className="last:ml-12 last:scale-150"
               >
                 <Image
                   src={social.type ? socialIcons[social.type] : ""}
