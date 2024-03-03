@@ -1,5 +1,6 @@
 import { fetchCv } from "@/app/_api/fetchGlobals";
 import { HeroCv } from "@/app/_heros/Cv";
+import CvBlock from "@/app/_blocks/CvBlock";
 import type { Cv } from "@/app/_types/payload-types";
 import { notFound } from "next/navigation";
 
@@ -16,8 +17,6 @@ export default async function Cv() {
         return notFound();
     }
 
-    // console.log(cv);
-
 
     const { education, experience } = cv;
 
@@ -26,8 +25,8 @@ export default async function Cv() {
             <div className="mb-16">
                 <div className="flex flex-col items-start">
                     <HeroCv {...cv} />
-                    {/* <CvBlock {education} />
-                <CvBlock {experience} /> */}
+                    {experience && <CvBlock data={experience} type='experience' />}
+                    {education && <CvBlock data={education} type='education' />}
                 </div>
             </div>
         </div>
