@@ -9,9 +9,15 @@ import { fetchDocs } from "@/app/_api/fetchDocs";
 import { generateMeta } from "@/app/_utilities/generateMeta";
 // import { Blocks } from '../../_components/Blocks'
 import { Hero } from "@/app/_components/Hero";
+import Cv from "../../_cv/Cv";
 
 export default async function Page({ params: { slug = "home" } }) {
   const { isEnabled: isDraftMode } = draftMode();
+
+  if (slug === "cv")
+  {
+    return Cv();
+  }
 
   let page: Page | null = null;
 
@@ -28,6 +34,8 @@ export default async function Page({ params: { slug = "home" } }) {
   if (!page) {
     return notFound();
   }
+
+  
 
   // const { hero, layout } = page;
   const { hero } = page;
