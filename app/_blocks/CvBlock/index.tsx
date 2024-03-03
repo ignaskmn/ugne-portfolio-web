@@ -15,7 +15,7 @@ export default function CvBlock({ data, type }: CvBlockProps) {
             <div key={index} className="mb-4">
                 <p>Start Date: {item.startDate}</p>
                 <p>End Date: {item.endDate || 'Ongoing'}</p>
-                <h3 className="text-xl sm:text-3xl text-white">{(item as Experience).position || (item as Education).degree}</h3>
+                <h3 className="text-xl sm:text-2xl text-white">{(item as Experience).position || (item as Education).degree}</h3>
                 <h4 className="text-stone-400">{type === 'education' ? (item as Education).institution : (item as Experience).organization}</h4>
             </div>
         ))}
