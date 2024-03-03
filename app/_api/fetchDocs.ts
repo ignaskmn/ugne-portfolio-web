@@ -1,6 +1,6 @@
 import type { Config } from "@/app/_types/payload-types";
 
-const url = 'https://admin.ugnemakselyte.com';
+const url = process.env.NODE_ENV === 'production' ? 'https://admin.ugnemakselyte.com' : 'http://localhost:3000';
 
 export const fetchDocs = async <T>(
   collection: keyof Config["collections"]

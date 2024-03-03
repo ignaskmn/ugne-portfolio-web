@@ -1,9 +1,6 @@
 import type { Footer, Header, Cv } from "@/app/_types/payload-types";
 
-
-
-const url = 'https://admin.ugnemakselyte.com';
-// const url = 'http://localhost:3000';
+const url = process.env.NODE_ENV === 'production' ? 'https://admin.ugnemakselyte.com' : 'http://localhost:3000';
 
 export async function fetchHeader(): Promise<Header> {
   const header = await fetch(
