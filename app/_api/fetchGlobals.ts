@@ -1,5 +1,7 @@
 import type { Footer, Header, Cv } from "@/app/_types/payload-types";
 
+
+
 const url = 'https://admin.ugnemakselyte.com';
 // const url = 'http://localhost:3000';
 
