@@ -17,7 +17,7 @@ export const HeroHome: React.FC<Page["hero"]> = ({
         </div>
       )}
       {description && (
-        <div className="p-4 border border-1 border-gray-400 inline-block max-w-xs sm:max-w-md">
+        <div className="p-4 border border-1 border-stone-400 inline-block max-w-xs sm:max-w-md">
           <RichText content={description} />
         </div>
       )}
