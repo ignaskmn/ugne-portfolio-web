@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { Page } from '@/app/_types/payload-types'
 import { ArchiveBlock } from '@/app/_blocks/Archive'

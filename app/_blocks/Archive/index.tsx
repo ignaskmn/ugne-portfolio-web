@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react'
 
 import RichText from '@/app/_components/RichText'

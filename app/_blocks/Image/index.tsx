@@ -1,4 +1,3 @@
-import Image from "next/image"
 import type { Image as ImageType } from "@/app/_types/payload-types";
 import { Media } from "@/app/_components/Media";
 import { ImageBlockProps } from './types'

@@ -4,6 +4,8 @@ import React from 'react'
 import NextImage, { StaticImageData } from 'next/image'
 import { Props as MediaProps } from '../types'
 
+const url = process.env.NODE_ENV === 'production' ? 'https://admin.ugnemakselyte.com' : 'http://localhost:3000';
+
 export const Image: React.FC<MediaProps> = props => {
   const {
     imgClassName,
@@ -42,7 +44,7 @@ export const Image: React.FC<MediaProps> = props => {
 
     const filename = fullFilename
 
-    src = `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/images/${filename}`
+    src = `${url}/images/${filename}`
   }
 
   const sizes = Object.entries(breakpoints)
