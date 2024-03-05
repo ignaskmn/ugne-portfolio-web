@@ -7,7 +7,7 @@ import type { Page } from "@/app/_types/payload-types";
 import { fetchDoc } from "@/app/_api/fetchDoc";
 import { fetchDocs } from "@/app/_api/fetchDocs";
 import { generateMeta } from "@/app/_utilities/generateMeta";
-// import { Blocks } from '../../_components/Blocks'
+import { Blocks } from '@/app/_components/Blocks'
 import { Hero } from "@/app/_components/Hero";
 import Cv from "../../_cv/Cv";
 
@@ -35,10 +35,8 @@ export default async function Page({ params: { slug = "home" } }) {
     return notFound();
   }
 
-  
-
-  // const { hero, layout } = page;
-  const { hero } = page;
+  const { hero, blocks } = page;
+  // const { hero } = page;
 
   return (
     <React.Fragment>
@@ -49,8 +47,9 @@ export default async function Page({ params: { slug = "home" } }) {
     /> */}
 
       <div className="mx-4 md:mx-24">
-        <div className="mb-16">
+        <div className="flex flex-col mb-16">
           <Hero {...hero} />
+          <Blocks blocks={blocks} />
         </div>
       </div>
     </React.Fragment>

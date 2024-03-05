@@ -19,7 +19,7 @@ export const Hero: React.FC<Page["hero"]> = (props) => {
   if (!HeroToRender) return null;
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="max-w-fit">
       <HeroToRender {...props} />
     </div>
   );

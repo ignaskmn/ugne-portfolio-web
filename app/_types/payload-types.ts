@@ -10,9 +10,9 @@ export interface Config {
   collections: {
     users: User;
     pages: Page;
-    works: Work;
-    shows: Show;
     categories: Category;
+    shows: Show;
+    works: Work;
     images: Image;
     recordings: Recording;
     documents: Document;
@@ -84,6 +84,40 @@ export interface Page {
             blockName?: string | null;
             blockType: 'imageBlock';
           }
+        | {
+            populateBy?: ('collection' | 'selection') | null;
+            relationTo?: ('works' | 'projects') | null;
+            categories?: (string | Category)[] | null;
+            limit?: number | null;
+            selectedDocs?:
+              | (
+                  | {
+                      relationTo: 'works';
+                      value: string | Work;
+                    }
+                  | {
+                      relationTo: 'shows';
+                      value: string | Show;
+                    }
+                )[]
+              | null;
+            populatedDocs?:
+              | (
+                  | {
+                      relationTo: 'works';
+                      value: string | Work;
+                    }
+                  | {
+                      relationTo: 'shows';
+                      value: string | Show;
+                    }
+                )[]
+              | null;
+            populatedDocsTotal?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'archive';
+          }
       )[]
     | null;
   slug?: string | null;
@@ -119,12 +153,22 @@ export interface Image {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: string;
+  title?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "works".
  */
 export interface Work {
   id: string;
   title: string;
-  categories?: (string | null) | Category;
+  category?: (string | null) | Category;
   publishedAt?: string | null;
   image: string | Image;
   richText?:
@@ -171,16 +215,6 @@ export interface Work {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  title?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -348,9 +382,4 @@ export interface Cv {
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
-}
-
-
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
 }
