@@ -11,8 +11,10 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@types/escape-html": "^1.0.4",
+    "@types/qs": "^6.9.12",
     "escape-html": "^1.0.3",
     "next": "14.1.0",
+    "qs": "^6.11.2",
     "react": "^18",
     "react-dom": "^18",
     "slate": "^0.101.5"

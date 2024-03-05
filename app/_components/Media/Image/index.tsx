@@ -4,8 +4,6 @@ import React from 'react'
 import NextImage, { StaticImageData } from 'next/image'
 import { Props as MediaProps } from '../types'
 
-import classes from './index.module.scss'
-
 export const Image: React.FC<MediaProps> = props => {
   const {
     imgClassName,
@@ -53,7 +51,7 @@ export const Image: React.FC<MediaProps> = props => {
 
   return (
     <NextImage
-      className={[isLoading && classes.placeholder, classes.image, imgClassName]
+      className={[isLoading && imgClassName]
         .filter(Boolean)
         .join(' ')}
       src={src}
