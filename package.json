@@ -17,7 +17,8 @@
     "qs": "^6.11.2",
     "react": "^18",
     "react-dom": "^18",
-    "slate": "^0.101.5"
+    "slate": "^0.101.5",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/node": "^20",
