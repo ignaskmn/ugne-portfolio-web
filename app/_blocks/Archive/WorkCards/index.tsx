@@ -1,6 +1,4 @@
-import { fetchWorks } from '@/app/_api/fetchWorks'
 import useSWR from 'swr'
-import { useEffect } from 'react'
 import { Card } from '@/app/_components/Card'
 import { Work } from '@/app/_types/payload-types'
 
