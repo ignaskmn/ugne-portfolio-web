@@ -11,7 +11,7 @@ export function VideoBlock({ type, ytcode }: videoBlock): JSX.Element {
     <div className="flex justify-center ">
       {type && type === "youtube" && (
         <iframe
-          className="w-full max-w-[700px] aspect-video"
+          className="w-full max-w-[700px] aspect-video my-4"
           src={`https://www.youtube.com/embed/${ytcode ?? ""}`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
