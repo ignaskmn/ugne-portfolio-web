@@ -37,7 +37,7 @@ export function RecordingBlock({
       )}
       {type && type === "soundcloud" && (
         <iframe
-          className={`w-full max-w-[700px] ${
+          className={`w-full max-w-[700px] mb-4 ${
             soundcloud?.sctype === "playlist" ? "h-[450px]" : "h-full"
           }`}
           src={`https://w.soundcloud.com/player/?url=${
