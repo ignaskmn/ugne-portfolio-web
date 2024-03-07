@@ -25,9 +25,9 @@ export function RecordingBlock({
       {type && type === "bandcamp" && (
         <iframe
           className="w-full max-w-[700px] h-fit"
-          src={`https://bandcamp.com/EmbeddedPlayer/album=${
-            bandcamp?.album
-          }/size=large/bgcol=ffffff/linkcol=e99708/tracklist=false/artwork=small/${
+          src={`https://bandcamp.com/EmbeddedPlayer/${
+            bandcamp?.album ? "album=" + bandcamp?.album + "/" : ""
+          }size=large/bgcol=ffffff/linkcol=e99708/tracklist=false/artwork=small/${
             bandcamp?.track ? "track=" + bandcamp?.track + "/" : ""
           }transparent=true/`}
           seamless
