@@ -23,7 +23,7 @@ export default function NavItem({ link }: NavItemProps) {
       {link.type === "reference" &&
         typeof link.reference?.value === "object" && (
           <Link
-            href={(link.reference?.value as Page)?.slug || ""}
+            href={`/${(link.reference?.value as Page)?.slug || ""}`}
             role="button"
             className={`lowercase inline-block w-full border border-1 border-white py-2 px-8 text-xl bg-black text-white hover:bg-white hover:text-black`}
           >
@@ -32,7 +32,7 @@ export default function NavItem({ link }: NavItemProps) {
         )}
       {link.type === "custom" && (
         <Link
-          href={link.url || ""}
+          href={`/${link.url || ""}`}
           role="button"
           className={`lowercase inline-block w-full border border-1 border-white py-2 px-8 text-xl bg-black text-white hover:bg-white hover:text-black`}
         >

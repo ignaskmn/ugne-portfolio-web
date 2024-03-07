@@ -7,15 +7,14 @@ import type { Page } from "@/app/_types/payload-types";
 import { fetchDoc } from "@/app/_api/fetchDoc";
 import { fetchDocs } from "@/app/_api/fetchDocs";
 import { generateMeta } from "@/app/_utilities/generateMeta";
-import { Blocks } from '@/app/_components/Blocks'
+import { Blocks } from "@/app/_components/Blocks";
 import { Hero } from "@/app/_components/Hero";
-import Cv from "../../_cv/Cv";
+import Cv from "@/app/_cv/Cv";
 
 export default async function Page({ params: { slug = "home" } }) {
   const { isEnabled: isDraftMode } = draftMode();
 
-  if (slug === "cv")
-  {
+  if (slug === "cv") {
     return Cv();
   }
 

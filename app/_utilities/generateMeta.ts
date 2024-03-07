@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-import type { Page } from "@/app/_types/payload-types";
+import type { Page, Work } from "@/app/_types/payload-types";
 import { mergeOpenGraph } from "./mergeOpenGraph";
 
 export const generateMeta = async (args: {
-  doc: Page | null;
+  doc: Page | Work | null;
 }): Promise<Metadata> => {
   const { doc } = args || {};
 

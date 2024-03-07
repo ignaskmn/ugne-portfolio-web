@@ -2,7 +2,10 @@ import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 import type { Config } from "@/app/_types/payload-types";
 
-const url = process.env.NODE_ENV === 'production' ? 'https://admin.ugnemakselyte.com' : 'http://localhost:3000';
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://admin.ugnemakselyte.com"
+    : "http://localhost:3000";
 
 export const fetchDoc = async <T>(args: {
   collection: keyof Config["collections"];
@@ -20,9 +23,7 @@ export const fetchDoc = async <T>(args: {
   }
 
   const doc: T = await fetch(
-    `${
-      url
-    }/api/${collection}?where[slug][equals]=${slug}${
+    `${url}/api/${collection}?where[slug][equals]=${slug}${
       draft && payloadToken ? "&draft=true" : ""
     }`,
     {
@@ -30,7 +31,7 @@ export const fetchDoc = async <T>(args: {
       // this is the key we'll use to on-demand revalidate pages that use this data
       // we do this by calling `revalidateTag()` using the same key
       // see `app/api/revalidate.ts` for more info
-      next: { tags: [`pages_${slug}`] },
+      next: { tags: [`${collection}_${slug}`] },
       ...(draft && payloadToken
         ? {
             headers: {

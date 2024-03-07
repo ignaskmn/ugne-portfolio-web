@@ -16,8 +16,8 @@ export interface Config {
     images: Image;
     recordings: Recording;
     documents: Document;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
+    "payload-preferences": PayloadPreference;
+    "payload-migrations": PayloadMigration;
   };
   globals: {
     footer: Footer;
@@ -32,7 +32,7 @@ export interface Config {
 export interface User {
   id: string;
   name?: string | null;
-  roles?: ('admin' | 'user')[] | null;
+  roles?: ("admin" | "user")[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -53,7 +53,7 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   hero: {
-    type: 'none' | 'home' | 'default';
+    type: "none" | "home" | "default";
     text?: string | null;
     subtext?:
       | {
@@ -76,27 +76,27 @@ export interface Page {
               | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'textBlock';
+            blockType: "textBlock";
           }
         | {
             image: string | Image;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'imageBlock';
+            blockType: "imageBlock";
           }
         | {
-            populateBy?: ('collection' | 'selection') | null;
-            relationTo?: ('works' | 'projects') | null;
+            populateBy?: ("collection" | "selection") | null;
+            relationTo?: ("works" | "projects") | null;
             categories?: (string | Category)[] | null;
             limit?: number | null;
             selectedDocs?:
               | (
                   | {
-                      relationTo: 'works';
+                      relationTo: "works";
                       value: string | Work;
                     }
                   | {
-                      relationTo: 'shows';
+                      relationTo: "shows";
                       value: string | Show;
                     }
                 )[]
@@ -104,11 +104,11 @@ export interface Page {
             populatedDocs?:
               | (
                   | {
-                      relationTo: 'works';
+                      relationTo: "works";
                       value: string | Work;
                     }
                   | {
-                      relationTo: 'shows';
+                      relationTo: "shows";
                       value: string | Show;
                     }
                 )[]
@@ -116,7 +116,7 @@ export interface Page {
             populatedDocsTotal?: number | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'archive';
+            blockType: "archive";
           }
       )[]
     | null;
@@ -128,7 +128,7 @@ export interface Page {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  _status?: ("draft" | "published") | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -176,36 +176,38 @@ export interface Work {
         [k: string]: unknown;
       }[]
     | null;
-  blocks: (
-    | {
-        richText?:
-          | {
-              [k: string]: unknown;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'textBlock';
-      }
-    | {
-        image: string | Image;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'imageBlock';
-      }
-    | {
-        video?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'videoBlock';
-      }
-    | {
-        recording?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'recordingBlock';
-      }
-  )[];
+  blocks?:
+    | (
+        | {
+            richText?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "textBlock";
+          }
+        | {
+            image: string | Image;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "imageBlock";
+          }
+        | {
+            video?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "videoBlock";
+          }
+        | {
+            recording?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "recordingBlock";
+          }
+      )[]
+    | null;
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -214,7 +216,7 @@ export interface Work {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  _status?: ("draft" | "published") | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -239,7 +241,7 @@ export interface Show {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  _status?: ("draft" | "published") | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -278,7 +280,7 @@ export interface Document {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: 'users';
+    relationTo: "users";
     value: string | User;
   };
   key?: string | null;
@@ -316,7 +318,16 @@ export interface Footer {
   address?: string | null;
   socials?:
     | {
-        type?: ('bandcamp' | 'soundcloud' | 'spotify' | 'youtube' | 'linkedin' | 'instagram') | null;
+        type?:
+          | (
+              | "bandcamp"
+              | "soundcloud"
+              | "spotify"
+              | "youtube"
+              | "linkedin"
+              | "instagram"
+            )
+          | null;
         link: string;
         id?: string | null;
       }[]
@@ -333,10 +344,10 @@ export interface Header {
   navItems?:
     | {
         link: {
-          type?: ('reference' | 'custom') | null;
+          type?: ("reference" | "custom") | null;
           newTab?: boolean | null;
           reference?: {
-            relationTo: 'pages';
+            relationTo: "pages";
             value: string | Page;
           } | null;
           url?: string | null;
