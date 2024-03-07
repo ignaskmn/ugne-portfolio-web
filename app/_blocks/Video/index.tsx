@@ -1,9 +1,8 @@
 import { Work } from "@/app/_types/payload-types";
 
 export function VideoBlock(
-  props: Extract<Work["blocks"], { blockType: "videoBlock" }>
+  { video }: Extract<Work["blocks"], { blockType: "videoBlock" }>
 ): JSX.Element {
-  console.log(props);
-
+  console.log(video);
   return <div>VideoBlock</div>;
 }

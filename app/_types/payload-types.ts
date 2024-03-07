@@ -201,7 +201,17 @@ export interface Work {
             blockType: "videoBlock";
           }
         | {
-            recording?: string | null;
+            type?: ("bandcamp" | "soundcloud") | null;
+            bandcamp?: {
+              bctype?: ("album" | "track") | null;
+              album?: string | null;
+              track?: string | null;
+            };
+            soundcloud?: {
+              sctype?: ("track" | "playlist") | null;
+              track?: string | null;
+              playlist?: string | null;
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: "recordingBlock";
