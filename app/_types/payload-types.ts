@@ -195,7 +195,8 @@ export interface Work {
             blockType: "imageBlock";
           }
         | {
-            video?: string | null;
+            type?: "youtube" | null;
+            ytcode?: string | null;
             id?: string | null;
             blockName?: string | null;
             blockType: "videoBlock";

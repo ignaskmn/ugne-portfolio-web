@@ -1,5 +1,3 @@
-import { Work } from "@/app/_types/payload-types";
-
 interface recordingBlock {
   type?: ("bandcamp" | "soundcloud") | null;
   bandcamp?: {
