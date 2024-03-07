@@ -36,7 +36,7 @@ export default async function Post({
   const { blocks } = work;
 
   return (
-    <div className="flex flex-col items-center mb-16">
+    <div className="flex flex-col items-center mb-16 mx-4">
       <div className="max-w-4xl">
         <HeroWork {...work} />
         <Blocks blocks={blocks} />
