@@ -5,30 +5,33 @@ import type { Cv } from "@/app/_types/payload-types";
 import { notFound } from "next/navigation";
 
 export default async function Cv() {
-    let cv: Cv | null = null;
+  let cv: Cv | null = null;
 
-    try {
-        cv = await fetchCv();
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    cv = await fetchCv();
+  } catch (error) {
+    console.log(error);
+  }
 
-    if (!cv) {
-        return notFound();
-    }
+  if (!cv) {
+    return notFound();
+  }
 
+  const { education, experience } = cv;
 
-    const { education, experience } = cv;
-
-    return <>
-        <div className="mx-4 md:mx-24">
-            <div className="mb-16">
-                <div className="flex flex-col items-start">
-                    <HeroCv {...cv} />
-                    {experience && <CvBlock data={experience} type='experience' />}
-                    {education && <CvBlock data={education} type='education' />}
-                </div>
+  return (
+    <>
+      <div className="mx-4 md:mx-24">
+        <div className="mb-16">
+          <div className="flex flex-col items-start">
+            <HeroCv {...cv} />
+            <div className="flex flex-col xl:flex-row gap-32">
+              {experience && <CvBlock data={experience} type="experience" />}
+              {education && <CvBlock data={education} type="education" />}
             </div>
+          </div>
         </div>
+      </div>
     </>
+  );
 }
