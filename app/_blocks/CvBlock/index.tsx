@@ -21,7 +21,7 @@ export default function CvBlock({ data, type }: CvBlockProps) {
         </h2>
       )}
       {data.map((item, index) => (
-        <div key={index} className="mb-4">
+        <div key={index} className="mb-4 pb-4 border-b border-stone-300 last:border-0 ">
           <p className="text-stone-400">
             {new Date(item.startDate).toLocaleDateString("en-GB")} - {item.endDate
               ? new Date(item.endDate).toLocaleDateString("en-GB")
