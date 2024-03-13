@@ -25,7 +25,7 @@ export default async function Cv() {
         <div className="mb-16">
           <div className="flex flex-col items-start">
             <HeroCv {...cv} />
-            <div className="flex flex-col xl:flex-row gap-32">
+            <div className="flex flex-col xl:flex-row gap-8 xl:gap-32">
               {experience && <CvBlock data={experience} type="experience" />}
               {education && <CvBlock data={education} type="education" />}
             </div>
