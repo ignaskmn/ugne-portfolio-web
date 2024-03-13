@@ -11,7 +11,6 @@ export interface Config {
     users: User;
     pages: Page;
     categories: Category;
-    shows: Show;
     works: Work;
     images: Image;
     recordings: Recording;
@@ -86,37 +85,33 @@ export interface Page {
           }
         | {
             populateBy?: ("collection" | "selection") | null;
-            relationTo?: ("works" | "projects") | null;
+            relationTo?: "works" | null;
             categories?: (string | Category)[] | null;
             limit?: number | null;
             selectedDocs?:
-              | (
-                  | {
-                      relationTo: "works";
-                      value: string | Work;
-                    }
-                  | {
-                      relationTo: "shows";
-                      value: string | Show;
-                    }
-                )[]
+              | {
+                  relationTo: "works";
+                  value: string | Work;
+                }[]
               | null;
             populatedDocs?:
-              | (
-                  | {
-                      relationTo: "works";
-                      value: string | Work;
-                    }
-                  | {
-                      relationTo: "shows";
-                      value: string | Show;
-                    }
-                )[]
+              | {
+                  relationTo: "works";
+                  value: string | Work;
+                }[]
               | null;
             populatedDocsTotal?: number | null;
             id?: string | null;
             blockName?: string | null;
             blockType: "archive";
+          }
+        | {
+            title?: string | null;
+            link?: string | null;
+            image?: string | Image | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "showBlock";
           }
       )[]
     | null;
@@ -219,31 +214,6 @@ export interface Work {
           }
       )[]
     | null;
-  slug?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Image | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ("draft" | "published") | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "shows".
- */
-export interface Show {
-  id: string;
-  title: string;
-  publishedAt?: string | null;
-  image: string | Image;
-  richText?:
-    | {
-        [k: string]: unknown;
-      }[]
-    | null;
-  recording: string | Recording;
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -377,7 +347,6 @@ export interface Header {
 export interface Cv {
   id: string;
   name?: string | null;
-  image?: string | Image | null;
   richText?:
     | {
         [k: string]: unknown;
