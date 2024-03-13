@@ -12,11 +12,11 @@ export default function CvBlock({ data, type }: CvBlockProps) {
   return (
     <div className="max-w-lg">
       {type === "education" ? (
-        <h2 className="uppercase mb-4 text-2xl sm:text-4xl text-white">
+        <h2 className="uppercase mb-4 text-3xl sm:text-4xl text-white">
           education
         </h2>
       ) : (
-        <h2 className="uppercase mb-4 text-2xl sm:text-4xl text-white">
+        <h2 className="uppercase mb-4 text-3xl sm:text-4xl text-white">
           experience
         </h2>
       )}
