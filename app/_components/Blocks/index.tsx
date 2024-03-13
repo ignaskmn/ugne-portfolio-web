@@ -6,12 +6,14 @@ import { ImageBlock } from "@/app/_blocks/Image";
 import { TextBlock } from "@/app/_blocks/Text";
 import { RecordingBlock } from "@/app/_blocks/Recording";
 import { VideoBlock } from "@/app/_blocks/Video";
+import { ShowsBlock } from "@/app/_blocks/Shows";
 const blockComponents = {
   archive: ArchiveBlock,
   textBlock: TextBlock,
   imageBlock: ImageBlock,
   videoBlock: VideoBlock,
   recordingBlock: RecordingBlock,
+  showsBlock: ShowsBlock
   // cta: CallToActionBlock,
 };
 

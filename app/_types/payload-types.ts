@@ -15,8 +15,8 @@ export interface Config {
     images: Image;
     recordings: Recording;
     documents: Document;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {
     footer: Footer;
@@ -31,7 +31,7 @@ export interface Config {
 export interface User {
   id: string;
   name?: string | null;
-  roles?: ("admin" | "user")[] | null;
+  roles?: ('admin' | 'user')[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -52,7 +52,7 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   hero: {
-    type: "none" | "home" | "default";
+    type: 'none' | 'home' | 'default';
     text?: string | null;
     subtext?:
       | {
@@ -75,43 +75,48 @@ export interface Page {
               | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: "textBlock";
+            blockType: 'textBlock';
           }
         | {
             image: string | Image;
             id?: string | null;
             blockName?: string | null;
-            blockType: "imageBlock";
+            blockType: 'imageBlock';
           }
         | {
-            populateBy?: ("collection" | "selection") | null;
-            relationTo?: "works" | null;
+            populateBy?: ('collection' | 'selection') | null;
+            relationTo?: 'works' | null;
             categories?: (string | Category)[] | null;
             limit?: number | null;
             selectedDocs?:
               | {
-                  relationTo: "works";
+                  relationTo: 'works';
                   value: string | Work;
                 }[]
               | null;
             populatedDocs?:
               | {
-                  relationTo: "works";
+                  relationTo: 'works';
                   value: string | Work;
                 }[]
               | null;
             populatedDocsTotal?: number | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: "archive";
+            blockType: 'archive';
           }
         | {
-            title?: string | null;
-            link?: string | null;
-            image?: string | Image | null;
+            shows?:
+              | {
+                  title: string;
+                  link: string;
+                  image?: string | Image | null;
+                  id?: string | null;
+                }[]
+              | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: "showBlock";
+            blockType: 'showsBlock';
           }
       )[]
     | null;
@@ -123,7 +128,7 @@ export interface Page {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -181,36 +186,36 @@ export interface Work {
               | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: "textBlock";
+            blockType: 'textBlock';
           }
         | {
             image: string | Image;
             id?: string | null;
             blockName?: string | null;
-            blockType: "imageBlock";
+            blockType: 'imageBlock';
           }
         | {
-            type?: "youtube" | null;
+            type?: 'youtube' | null;
             ytcode?: string | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: "videoBlock";
+            blockType: 'videoBlock';
           }
         | {
-            type?: ("bandcamp" | "soundcloud") | null;
+            type?: ('bandcamp' | 'soundcloud') | null;
             bandcamp?: {
-              bctype?: ("album" | "track") | null;
+              bctype?: ('album' | 'track') | null;
               album?: string | null;
               track?: string | null;
             };
             soundcloud?: {
-              sctype?: ("track" | "playlist") | null;
+              sctype?: ('track' | 'playlist') | null;
               track?: string | null;
               playlist?: string | null;
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: "recordingBlock";
+            blockType: 'recordingBlock';
           }
       )[]
     | null;
@@ -222,7 +227,7 @@ export interface Work {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -261,7 +266,7 @@ export interface Document {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -299,16 +304,7 @@ export interface Footer {
   address?: string | null;
   socials?:
     | {
-        type?:
-          | (
-              | "bandcamp"
-              | "soundcloud"
-              | "spotify"
-              | "youtube"
-              | "linkedin"
-              | "instagram"
-            )
-          | null;
+        type?: ('bandcamp' | 'soundcloud' | 'spotify' | 'youtube' | 'linkedin' | 'instagram') | null;
         link: string;
         id?: string | null;
       }[]
@@ -325,10 +321,10 @@ export interface Header {
   navItems?:
     | {
         link: {
-          type?: ("reference" | "custom") | null;
+          type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
-            relationTo: "pages";
+            relationTo: 'pages';
             value: string | Page;
           } | null;
           url?: string | null;
