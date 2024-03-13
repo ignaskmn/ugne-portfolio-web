@@ -10,7 +10,7 @@ type CvBlockProps = {
 
 export default function CvBlock({ data, type }: CvBlockProps) {
   return (
-    <div>
+    <div className="max-w-xl">
       {type === "education" ? (
         <h2 className="uppercase mb-4 text-2xl sm:text-4xl text-white">
           education
