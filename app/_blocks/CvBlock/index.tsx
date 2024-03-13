@@ -22,19 +22,15 @@ export default function CvBlock({ data, type }: CvBlockProps) {
       )}
       {data.map((item, index) => (
         <div key={index} className="mb-4">
-          <p>
-            Start Date: {new Date(item.startDate).toLocaleDateString("en-GB")}
-          </p>
-          <p>
-            End Date:{" "}
-            {item.endDate
+          <p className="text-stone-400">
+            {new Date(item.startDate).toLocaleDateString("en-GB")} - {item.endDate
               ? new Date(item.endDate).toLocaleDateString("en-GB")
               : "Ongoing"}
           </p>
           <h3 className="text-2xl text-white">
             {(item as Experience).position || (item as Education).degree}
           </h3>
-          <h4 className="text-stone-400">
+          <h4 className="text-stone-100">
             {type === "education"
               ? (item as Education).institution
               : (item as Experience).organization}
