@@ -12,7 +12,7 @@ const url =
 export const HeroCv: React.FC<Cv> = ({ name, richText, download }) => {
   return (
     <>
-      {name && (
+      {(name || richText) && (
         <div className="my-8">
           <div className="mb-8 pl-4 pr-8 sm:pr-16 py-4 sm:py-8 border border-1 border-stone-400">
             <h1 className="text-4xl sm:text-5xl">{name}</h1>
