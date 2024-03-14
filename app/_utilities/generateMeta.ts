@@ -3,6 +3,11 @@ import type { Metadata } from "next";
 import type { Page, Work } from "@/app/_types/payload-types";
 import { mergeOpenGraph } from "./mergeOpenGraph";
 
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://admin.ugnemakselyte.com"
+    : "http://localhost:3000";
+
 export const generateMeta = async (args: {
   doc: Page | Work | null;
 }): Promise<Metadata> => {
@@ -12,7 +17,7 @@ export const generateMeta = async (args: {
     typeof doc?.meta?.image === "object" &&
     doc?.meta?.image !== null &&
     "url" in doc?.meta?.image &&
-    `${process.env.NEXT_PUBLIC_SERVER_URL}${doc.meta.image.url}`;
+    `${url}${doc.meta.image.url}`;
 
   return {
     title: doc?.meta?.title || "Payload",
