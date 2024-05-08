@@ -24,6 +24,11 @@ export function WorkCards({
   if (!data) return <div>Loading...</div>;
 
   let works: Work[] = data.docs;
+  works.sort((a, b) => {
+    return new Date(b.publishedAt ? b.publishedAt : "").getTime() - new Date(a.publishedAt ? a.publishedAt : "").getTime();
+  });
+
+
 
   return (
     <div className="w-full flex flex-col items-start md:grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-4">
