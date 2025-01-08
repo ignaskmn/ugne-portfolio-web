@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 import Article from "@/app/_components/RichText/Article";
 import { Page } from "@/app/_types/payload-types";
 

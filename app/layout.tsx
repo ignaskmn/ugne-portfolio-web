@@ -30,12 +30,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ugnemakselyte.com"),
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const { isEnabled: isDraftMode } = draftMode();
+export default async function RootLayout(
+  {
+    children,
+  }: Readonly<{
+    children: React.ReactNode;
+  }>
+) {
+  const { isEnabled: isDraftMode } = await draftMode();
 
   return (
     <html lang="en">

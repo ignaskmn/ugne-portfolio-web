@@ -36,7 +36,7 @@ export async function GET(
   const userRes = await userReq.json();
 
   if (!userReq.ok || !userRes?.user) {
-    draftMode().disable();
+    (await draftMode()).disable();
     return new Response("You are not allowed to preview this page", {
       status: 403,
     });
@@ -46,7 +46,7 @@ export async function GET(
     return new Response("Invalid token", { status: 401 });
   }
 
-  draftMode().enable();
+  (await draftMode()).enable();
 
   redirect(url);
 }

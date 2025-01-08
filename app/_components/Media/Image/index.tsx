@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import React from 'react'
-import NextImage, { StaticImageData } from 'next/image'
-import { Props as MediaProps } from '../types'
+import React from "react";
+import NextImage, { StaticImageData } from "next/image";
+import { Props as MediaProps } from "../types";
 
-const url = process.env.NODE_ENV === 'production' ? 'https://admin.ugnemakselyte.com' : 'http://localhost:3000';
+const url = process.env.NEXT_PUBLIC_PAYLOAD_URL;
 
-export const Image: React.FC<MediaProps> = props => {
+export const Image: React.FC<MediaProps> = (props) => {
   const {
     imgClassName,
     onClick,
@@ -16,60 +16,59 @@ export const Image: React.FC<MediaProps> = props => {
     fill,
     src: srcFromProps,
     alt: altFromProps,
-  } = props
+  } = props;
 
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  let width: number | undefined
-  let height: number | undefined
-  let alt = altFromProps
-  let src: StaticImageData | string = srcFromProps || ''
+  let width: number | undefined;
+  let height: number | undefined;
+  let alt = altFromProps;
+  let src: StaticImageData | string | null = srcFromProps || null;
 
-  const defaultTheme = require('tailwindcss/defaultTheme')
+  const defaultTheme = require("tailwindcss/defaultTheme");
 
   const breakpoints = defaultTheme.screens;
 
-
-  if (!src && resource && typeof resource !== 'string') {
+  if (!src && resource && typeof resource !== "string") {
     const {
       width: fullWidth,
       height: fullHeight,
       filename: fullFilename,
       alt: altFromResource,
-    } = resource
+    } = resource;
 
-    width = fullWidth ?? undefined
-    height = fullHeight ?? undefined
-    alt = altFromResource
+    width = fullWidth ?? undefined;
+    height = fullHeight ?? undefined;
+    alt = altFromResource;
 
-    const filename = fullFilename
+    const filename = fullFilename;
 
-    src = `${url}/images/${filename}`
+    src = `${url}/images/${filename}`;
   }
 
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
-    .join(', ')
+    .join(", ");
 
   return (
-    <NextImage
-      className={[isLoading && imgClassName]
-        .filter(Boolean)
-        .join(' ')}
-      src={src}
-      alt={alt || ''}
-      onClick={onClick}
-      onLoad={() => {
-        setIsLoading(false)
-        if (typeof onLoadFromProps === 'function') {
-          onLoadFromProps()
-        }
-      }}
-      fill={fill}
-      width={!fill ? width : undefined}
-      height={!fill ? height : undefined}
-      sizes={sizes}
-      priority={priority}
-    />
-  )
-}
+    src && (
+      <NextImage
+        className={[isLoading && imgClassName].filter(Boolean).join(" ")}
+        src={src}
+        alt={alt || ""}
+        onClick={onClick}
+        onLoad={() => {
+          setIsLoading(false);
+          if (typeof onLoadFromProps === "function") {
+            onLoadFromProps();
+          }
+        }}
+        fill={fill}
+        width={!fill ? width : undefined}
+        height={!fill ? height : undefined}
+        sizes={sizes}
+        priority={priority}
+      />
+    )
+  );
+};

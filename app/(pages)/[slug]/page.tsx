@@ -11,8 +11,14 @@ import { Blocks } from "@/app/_components/Blocks";
 import { Hero } from "@/app/_components/Hero";
 import Cv from "@/app/_cv/Cv";
 
-export default async function Page({ params: { slug = "home" } }) {
-  const { isEnabled: isDraftMode } = draftMode();
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const params = await props.params;
+
+  const { slug = "home" } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode();
 
   if (slug === "cv") {
     return Cv();
@@ -56,21 +62,24 @@ export default async function Page({ params: { slug = "home" } }) {
 }
 
 export async function generateStaticParams() {
-  const pages = await fetchDocs<Page>("pages");
-
-  return pages.map(({ slug }) =>
-    slug !== "home"
-      ? {
-          slug,
-        }
-      : {}
-  ); // eslint-disable-line function-paren-newline
+  try {
+    const pages = await fetchDocs<Page>("pages");
+    return pages?.map((page) => ({
+      slug: page.slug,
+    }));
+  } catch (error) {
+    return [];
+  }
 }
 
-export async function generateMetadata({
-  params: { slug = "home" },
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { isEnabled: isDraftMode } = draftMode();
+  const params = await props.params;
+
+  const { slug = "home" } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode();
 
   let page: Page | null = null;
 

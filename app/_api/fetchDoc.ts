@@ -2,10 +2,7 @@ import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 import type { Config } from "@/app/_types/payload-types";
 
-const url =
-  process.env.NODE_ENV === "production"
-    ? "https://admin.ugnemakselyte.com"
-    : "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_PAYLOAD_URL;
 
 export const fetchDoc = async <T>(args: {
   collection: keyof Config["collections"];
@@ -39,7 +36,7 @@ export const fetchDoc = async <T>(args: {
             },
           }
         : {}),
-    }
+    },
   )
     .then((res) => res.json())
     ?.then((res) => {

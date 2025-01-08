@@ -9,7 +9,7 @@ export function Card({ title, image, slug, category }: Work) {
       className="w-full block max-w-md border border-1 border-stone-400 hover:border-white"
     >
       <div className="p-4">
-        <Media resource={image} />
+        {image && <Media resource={image} />}
         <div className="w-full text-right">
           <h3 className="font-mono text-sm mt-2 px-1 border border-1 border-stone-400 inline-block">
             {category && typeof category === "object" ? category.title : ""}

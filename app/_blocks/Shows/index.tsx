@@ -1,6 +1,8 @@
 import type { Image } from "@/app/_types/payload-types";
 import { Show } from "./Show"
 
+import type { JSX } from "react";
+
 interface showsBlock {
   shows?:
     | {

@@ -1,6 +1,8 @@
 import { Media } from '@/app/_components/Media';
 import { Image } from '@/app/_types/payload-types';
 
+import type { JSX } from "react";
+
 export function Show({ title, link, image }: { title: string, link: string, image?: Image | string | null | undefined }): JSX.Element {
     return (
       <a href={link ?? ''} target="_blank" rel="noreferrer" className="block max-w-sm border border-1 border-stone-400 hover:border-white">

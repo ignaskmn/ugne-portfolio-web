@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 interface recordingBlock {
   type?: ("bandcamp" | "soundcloud") | null;
   bandcamp?: {

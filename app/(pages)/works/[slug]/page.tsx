@@ -10,12 +10,14 @@ import { Blocks } from "@/app/_components/Blocks";
 import { HeroWork } from "@/app/_heros/Work";
 import { generateMeta } from "@/app/_utilities/generateMeta";
 
-export default async function Post({
-  params: { slug },
-}: {
-  params: { slug: string };
+export default async function Post(props: {
+  params: Promise<{ slug: string }>;
 }) {
-  const { isEnabled: isDraftMode } = draftMode();
+  const params = await props.params;
+
+  const { slug } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode();
 
   let work: Work | null = null;
 
@@ -48,18 +50,22 @@ export default async function Post({
 export async function generateStaticParams() {
   try {
     const works = await fetchDocs<Work>("works");
-    return works?.map(({ slug }) => slug);
+    return works?.map((work) => ({
+      slug: work.slug,
+    }));
   } catch (error) {
     return [];
   }
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: {
-  params: { slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { isEnabled: isDraftMode } = draftMode();
+  const params = await props.params;
+
+  const { slug } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode();
 
   let post: Work | null = null;
 

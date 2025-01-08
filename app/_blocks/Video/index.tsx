@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 interface videoBlock {
   type?: "youtube" | null;
   ytcode?: string | null;
