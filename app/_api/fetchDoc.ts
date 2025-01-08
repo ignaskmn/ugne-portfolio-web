@@ -16,7 +16,8 @@ export const fetchDoc = async <T>(args: {
 
   if (draft) {
     const { cookies } = await import("next/headers");
-    payloadToken = cookies().get("payload-token");
+    const cookiesInstance = await cookies();
+    payloadToken = cookiesInstance.get("payload-token");
   }
 
   const doc: T = await fetch(
