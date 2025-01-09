@@ -40,13 +40,13 @@ export default function Nav({ navItems }: Header) {
           {loaded && !isHome && (
             <li
               role="button"
-              className="w-full lowercase inline-block border border-1 border-white py-2 px-8 text-xl bg-black text-white hover:bg-white hover:text-black "
+              className="w-full lowercase inline-block border border-1 border-white py-2 px-8 text-xl bg-black text-white hover:bg-white hover:text-black"
             >
-              <button className="w-full flex" onClick={() => router.back()}>
-                <div className="w-6 mr-4">
-                  <ArrowUturnLeftIcon />
-                </div>
-                <div className="w-full">Back</div>
+              <button
+                className="w-full flex justify-start"
+                onClick={() => router.back()}
+              >
+                <div>back</div>
               </button>
             </li>
           )}

@@ -5,6 +5,7 @@ import { Text } from "slate";
 import { Label } from "../Label";
 import { LargeBody } from "../LargeBody";
 import { CMSLink } from "../Link";
+import Link from "next/link";
 
 // eslint-disable-next-line no-use-before-define
 type Children = Leaf[];
@@ -100,7 +101,7 @@ const serialize = (children?: Children): React.ReactNode[] =>
                 url={node.url}
                 reference={node.doc as any}
                 newTab={Boolean(node?.newTab)}
-                className="text-white underline underline-offset-8 decoration-yellow-400 hover:text-yellow-500 hover:no-underline"
+                className="text-white underline underline-offset-8 decoration-yellow-400 hover:text-yellow-500 hover:no-underline break-all overflow-wrap-anywhere"
               >
                 {serialize(node?.children)}
               </CMSLink>

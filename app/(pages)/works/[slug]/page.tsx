@@ -39,7 +39,7 @@ export default async function Post(props: {
 
   return (
     <div className="flex flex-col items-center mb-16 mx-4">
-      <div className="max-w-4xl">
+      <div className="w-full max-w-4xl">
         <HeroWork {...work} />
         <Blocks blocks={blocks} />
       </div>
