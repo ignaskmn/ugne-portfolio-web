@@ -1,7 +1,7 @@
 import { fetchDocs } from "@/app/_api/fetchDocs";
 import { Card } from "@/app/_components/Card";
 import type { Work, Category } from "@/app/_types/payload-types";
-import { FilterMenu } from "@/app/_components/FilterMenu";
+// import { FilterMenu } from "@/app/_components/FilterMenu";
 
 export default async function Page() {
   const works: Work[] = await fetchDocs("works");
@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <main className="mx-4 md:mx-24 my-8">
-      <FilterMenu categories={categories} activeCategory="all" />
+      {/* <FilterMenu categories={categories} activeCategory="all" /> */}
       <div className="w-full flex flex-col items-start md:grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-4">
         {works &&
           works?.length > 0 &&
