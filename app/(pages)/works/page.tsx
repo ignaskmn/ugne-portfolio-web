@@ -3,9 +3,11 @@ import { Card } from "@/app/_components/Card";
 import type { Work, Category } from "@/app/_types/payload-types";
 // import { FilterMenu } from "@/app/_components/FilterMenu";
 
-export default async function Page() {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const works: Work[] = await fetchDocs("works");
-  const categories: Category[] = await fetchDocs("categories");
+  // const categories: Category[] = await fetchDocs("categories");
 
   return (
     <main className="mx-4 md:mx-24 my-8">
