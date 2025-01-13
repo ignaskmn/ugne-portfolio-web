@@ -27,12 +27,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   // - https://github.com/vercel/next.js/issues/49778#issuecomment-1547028830
   if (typeof path === "string") {
     revalidatePath(path);
-
-    // If the path starts with '/works/', also revalidate the works listing page
-    if (path.startsWith("/works/")) {
-      revalidatePath("/works");
-    }
-
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
 
