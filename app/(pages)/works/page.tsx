@@ -3,13 +3,10 @@ import { Card } from "@/app/_components/Card";
 import type { Work, Category } from "@/app/_types/payload-types";
 // import { FilterMenu } from "@/app/_components/FilterMenu";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ dyn: string }>;
-}) {
-  const { dyn } = await searchParams;
-  const works: Work[] = await fetchDocs("works", dyn);
+export const dynamic = "force-dynamic";
+
+export default async function Page() {
+  const works: Work[] = await fetchDocs("works");
 
   // const categories: Category[] = await fetchDocs("categories");
 
