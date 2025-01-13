@@ -4,13 +4,12 @@ import type { Work, Category } from "@/app/_types/payload-types";
 // import { FilterMenu } from "@/app/_components/FilterMenu";
 
 export default async function Page({
-  params,
   searchParams,
 }: {
-  params: Promise<{ lang: string }>;
-  searchParams: Promise<{ c: string }>;
+  searchParams: Promise<{ dyn: string }>;
 }) {
-  const works: Work[] = await fetchDocs("works");
+  const { dyn } = await searchParams;
+  const works: Work[] = await fetchDocs("works", dyn);
 
   // const categories: Category[] = await fetchDocs("categories");
 

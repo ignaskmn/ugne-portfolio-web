@@ -4,6 +4,7 @@ const url = process.env.NEXT_PUBLIC_PAYLOAD_URL;
 
 export const fetchDocs = async <T>(
   collection: keyof Config["collections"],
+  dyn: string,
 ): Promise<T[]> => {
   const docs: {
     docs: T[];
